@@ -76,7 +76,7 @@ function createMarkup(arr) {
                     <img
                         class="gallery-image"
                         src="${photo.preview}"
-                        data-source="${photo.original.jpg}"
+                        data-source="${photo.original}"
                         alt="${photo.description}"
                     />
                 </a>
@@ -91,8 +91,22 @@ function openModalClick(event) {
         return;
     }
 
-    const instance = basicLightbox.create`<div class="modal">
-                <img src="${photo.original.jpg}" alt="${photo.description}">
-        </div>`();
+    const sourse = event.target.getAttribute('data-source');
+    const description = event.target.alt;
+
+    const instance = basicLightbox.create(
+        `<div class="modal">
+                <img class="modal-img" src="${sourse}" alt="${description}" width: 1440px;
+    height: 696px;>
+        </div>`,
+
+        {
+            onShow: instance => {
+                instance.element().querySelector('.modal').onclick = () => {
+                    instance.close();
+                };
+            },
+        },
+    );
     instance.show();
 }

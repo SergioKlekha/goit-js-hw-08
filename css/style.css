@@ -23,3 +23,16 @@ img {
     transform: scale(1.1);
     z-index: 1;
 }
+
+.modal {
+    background-color: #2e2f42cc;
+}
+
+.modal-img {
+    width: 1440px;
+    height: 696px;
+    top: 204px;
+    left: 2404px;
+    gap: 0px;
+    opacity: 0px;
+}
